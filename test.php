@@ -4,44 +4,31 @@
 <table border ="1">
     <tr>
         <th>
-            Roll
-        </th>
-        <th>
-            Pitch
+            ---
         </th>
     </tr>
-    <tr>
-        <td><img src="images/jeepside.jpg" id="jeepside"></td>
-        <td> <img src="images/jeepfront.jpg" id="jeepfront"></td>
-
+    <tr style="line-height: 110px;" >
+        <td style="padding-top:4px;padding-left: 20px; background-repeat: no-repeat; background-size: 100% auto;" background="images/inclinometerOverlay.png" >
+            <img style="margin-left:-10px; margin-top:25px;" src="images/jeepside.png" id="jeepside">
+            &nbsp;&nbsp;&nbsp;
+            <img style="margin-top:26px;" src="images/jeepfront.png" id="jeepfront">
+        </td>
     </tr>
 </table>
 </table>
 
 <script>
-    pitch();
-    function pitch() {
+    var myVar = setInterval(axisControl, 100);
+    function axisControl() {
         $.ajax({
             type: "POST",
             url: "jeepturn.php",
-            data: "Task=getx",
+            data: "Task=getaxis",
             success: function (text) {
                 console.log(text)
-                $("#jeepside").rotate(parseInt(text));
-                pitch();
-            }
-        });
-    }
-    roll();
-    function roll() {
-        $.ajax({
-            type: "POST",
-            url: "jeepturn.php",
-            data: "Task=gety",
-            success: function (text) {
-                console.log(text)
-                $("#jeepfront").rotate(parseInt(text));
-                roll();
+                axis = JSON.parse(text)
+                $("#jeepside").rotate(parseInt(axis.x));
+                $("#jeepfront").rotate(parseInt(axis.y));
             }
         });
     }

@@ -1,4 +1,4 @@
-?php
+<?php
 
 class gpio {
 
@@ -16,7 +16,7 @@ class gpio {
 
     public function enableLight($lightNum) {
         //0 is light on
-        $command = escapeshellcmd("/usr/bin/python /var/www/html/enableLight.py " . $lightNum);
+        $command = escapeshellcmd("/usr/bin/python /var/www/html/python/lightFunctions.py " . $lightNum . " 1");
         $returnStatus = exec($command);
         if ($returnStatus == 0) {
             return 'Light On';
@@ -27,7 +27,7 @@ class gpio {
 
     public function disableLight($lightNum) {
         //1 is light off
-        $command = escapeshellcmd("/usr/bin/python /var/www/html/disableLight.py " . $lightNum);
+        $command = escapeshellcmd("/usr/bin/python /var/www/html/python/lightFunctions.py " . $lightNum . " 0");
         $returnStatus = exec($command);
         if ($returnStatus == 1) {
             return 'Light Off';

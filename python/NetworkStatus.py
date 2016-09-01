@@ -4,7 +4,7 @@ import os,subprocess
 proc = subprocess.Popen(["arp | grep wlan0 | awk '!/incomplete/'"], stdout=subprocess.PIPE, shell=True)
 (out, err) = proc.communicate()
 
-shutdownLimit = 10
+shutdownLimit = 10  # 10 minutes when scheduled for every minute
 
 file = open('offlineCount', 'r')
 currentCount = int(file.read())

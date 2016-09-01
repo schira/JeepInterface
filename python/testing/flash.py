@@ -24,7 +24,7 @@ try:
    count = 3
    while (count > 0):
 
-      print '   The count is:', count
+      print)'   The count is:', count)
 
       for i in pinList:
          GPIO.output(i, GPIO.LOW)
@@ -42,7 +42,7 @@ try:
 
 # End program cleanly with keyboard
 except KeyboardInterrupt:
-  print "  Quit"
+  print("  Quit")
 
   # Reset GPIO settings
   GPIO.cleanup()
