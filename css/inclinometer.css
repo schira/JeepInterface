@@ -1,0 +1,55 @@
+/*
+    Created on : Sep 1, 2016, 7:53:43 PM
+    Author     : andrew
+*/
+
+.clsIncliOverlay {
+    background-repeat: no-repeat;
+    max-width: none;
+    background-size: 30% auto;
+    background-image: url('../images/inclinometerOverlay.png')
+}
+
+.overlayContainer{
+    position: relative;
+}
+
+.jpoverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index:1;
+}
+.jeepside {
+    position: absolute;
+    top: 147px;
+    left: 95px;
+    z-index: 2;
+}
+
+
+.jeepfront {
+    position:absolute;
+    top: 169px;
+    left:495px;
+    z-index:3;
+}
+
+.pitchraw {
+    z-index: 5;
+    font-size: 35px;
+    position:absolute;
+    top: 485px;
+    left:400px;
+}
+
+.rollraw {
+    font-size: 35px;
+    z-index: 5;
+    position:absolute;
+    top: 485px;
+    left:810px;
+
+}
+
