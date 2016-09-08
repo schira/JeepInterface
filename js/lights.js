@@ -1,18 +1,5 @@
 (function () {
-    $(window).load(function () {
-        $.ajax({
-            type: "POST",
-            url: "../../executeClass.php",
-            data: "Task=allStatus",
-            success: function (text) {
-                $.each($.parseJSON(text), function (index, element) {
-                    $("[value=" + index + "]").bootstrapSwitch('state', element)
-                    console.log('Light:' + index + ' Value:' + element)
-                });
 
-            }
-        });
-    });
     $(function () {
         $("[name='chkbox-rearlights']").bootstrapSwitch('state', true, true);
         $("[name='my-checkbox']").bootstrapSwitch();
@@ -31,10 +18,10 @@
         $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
             inputValue = this;
             if (state === false) {
-                task = 'disable'
+                task = 'enable'
             }
             if (state === true) {
-                task = 'enable'
+                task = 'disable'
             }
             $.ajax({
                 type: "POST",

@@ -1,10 +1,18 @@
 __author__ = 'andrew'
-import os,subprocess
+
+import ConfigParser
+import os
+import subprocess
 
 proc = subprocess.Popen(["arp | grep wlan0 | awk '!/incomplete/'"], stdout=subprocess.PIPE, shell=True)
 (out, err) = proc.communicate()
 
-shutdownLimit = 10  # 10 minutes when scheduled for every minute
+configParser = ConfigParser.RawConfigParser()
+configFilePath = r'/var/www/html/settings.ini'
+configParser.read(configFilePath)
+shutdownLimit = configParser.get('system', 'shutdown-phonecount')
+
+print(shutdownLimit)
 
 file = open('offlineCount', 'r')
 currentCount = int(file.read())

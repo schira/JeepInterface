@@ -2,7 +2,7 @@
 
 class gpio {
 
-    private $lightsNum = array(3, 4);
+    private $lightsNum = array(4, 17, 27, 22, 18, 23, 24, 20);
 
     public function lightStatus($lightNum) {
         $command = escapeshellcmd("gpio -g read " . $lightNum);
@@ -16,7 +16,7 @@ class gpio {
 
     public function enableLight($lightNum) {
         //0 is light on
-        $command = escapeshellcmd("/usr/bin/python /var/www/html/python/lightFunctions.py " . $lightNum . " 1");
+        $command = escapeshellcmd("sudo /usr/bin/python /var/www/html/python/lightFunctions.py " . $lightNum . " 1");
         $returnStatus = exec($command);
         if ($returnStatus == 0) {
             return 'Light On';
